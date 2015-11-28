@@ -10,7 +10,6 @@ namespace BeSmartService.DTO
 {
     public static class AutoMapperConfigurator
     {
-        //configuration
         public static void Configure() {
 
             Mapper.CreateMap<TestCreatorUserDal, TestCreatorUser>().ForMember(o => o.UserName, m => m.MapFrom(s => s.Id));
