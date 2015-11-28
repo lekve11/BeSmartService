@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="BeSmartService.BeSmartService" CodeBehind="BeSmartService.svc.cs" %>

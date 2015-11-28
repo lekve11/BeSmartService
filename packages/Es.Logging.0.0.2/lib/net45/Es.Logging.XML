@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Es.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:Es.Logging.ILogger">
+            <summary>
+            Provides logging interface
+            </summary>
+        </member>
+        <member name="M:Es.Logging.ILogger.Log(Es.Logging.LogLevel,System.String,System.Exception)">
+            <summary>
+            Writes the specified log level.
+            </summary>
+            <param name="logLevel">The log level.</param>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:Es.Logging.ILogger.IsEnabled(Es.Logging.LogLevel)">
+            <summary>
+            Checks if the given LogLevel is enabled.
+            </summary>
+            <param name="logLevel">The log level.</param>
+            <returns><c>true</c> if the specified log level is enabled; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Es.Logging.ILoggerFactory">
+            <summary>
+            Interface ILoggerFactory
+            </summary>
+        </member>
+        <member name="M:Es.Logging.ILoggerFactory.CreateLogger(System.String)">
+            <summary>
+            Creates the logger.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>ILogger.</returns>
+        </member>
+        <member name="M:Es.Logging.ILoggerFactory.AddProvider(Es.Logging.ILoggerProvider[])">
+            <summary>
+            Adds the provider.
+            </summary>
+            <param name="providers">The providers.</param>
+        </member>
+        <member name="T:Es.Logging.ILoggerProvider">
+            <summary>
+            Used to create logger instances
+            </summary>
+        </member>
+        <member name="M:Es.Logging.ILoggerProvider.CreateLogger(System.String)">
+            <summary>
+            Creates a new ILogger instance of the given name
+            </summary>
+            <param name="name">The name.</param>
+            <returns>ILogger.</returns>
+        </member>
+        <member name="T:Es.Logging.LoggerExtensions">
+            <summary>
+            Class LoggerExtensions.
+            </summary>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Debug(Es.Logging.ILogger,System.String)">
+            <summary>
+            Debugs the specified message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Debug(Es.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Debugs the specified format.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Trace(Es.Logging.ILogger,System.String)">
+            <summary>
+            Traces the specified message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Trace(Es.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Traces the specified format.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Info(Es.Logging.ILogger,System.String)">
+            <summary>
+            Informations the specified message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Info(Es.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Informations the specified format.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Warn(Es.Logging.ILogger,System.String)">
+            <summary>
+            Warns the specified message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Warn(Es.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Warns the specified format.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Warn(Es.Logging.ILogger,System.String,System.Exception)">
+            <summary>
+            Warns the specified message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="message">The message.</param>
+            <param name="error">The error.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Warn(Es.Logging.ILogger,System.Exception)">
+            <summary>
+            Warns the specified error.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="error">The error.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Error(Es.Logging.ILogger,System.String)">
+            <summary>
+            Errors the specified message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Error(Es.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Errors the specified format.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Error(Es.Logging.ILogger,System.String,System.Exception)">
+            <summary>
+            Errors the specified message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="message">The message.</param>
+            <param name="error">The error.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Error(Es.Logging.ILogger,System.Exception)">
+            <summary>
+            Errors the specified error.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="error">The error.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Fatal(Es.Logging.ILogger,System.String)">
+            <summary>
+            Fatals the specified message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Fatal(Es.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Fatals the specified format.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Fatal(Es.Logging.ILogger,System.String,System.Exception)">
+            <summary>
+            Fatals the specified message.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="message">The message.</param>
+            <param name="error">The error.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Fatal(Es.Logging.ILogger,System.Exception)">
+            <summary>
+            Fatals the specified error.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="error">The error.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Logger(Es.Logging.ILogger,Es.Logging.LogLevel,System.String)">
+            <summary>
+            Loggers the specified logger.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="logLevel">The log level.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Logger(Es.Logging.ILogger,Es.Logging.LogLevel,System.String,System.Object[])">
+            <summary>
+            Loggers the specified logger.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="logLevel">The log level.</param>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerExtensions.Logger(Es.Logging.ILogger,Es.Logging.LogLevel,System.String,System.Exception)">
+            <summary>
+            Loggers the specified logger.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="logLevel">The log level.</param>
+            <param name="message">The message.</param>
+            <param name="error">The error.</param>
+        </member>
+        <member name="T:Es.Logging.LoggerFactory">
+            <summary>
+            Class LoggerFactory.
+            </summary>
+        </member>
+        <member name="F:Es.Logging.LoggerFactory.lockObject">
+            <summary>
+            The lock object
+            </summary>
+        </member>
+        <member name="F:Es.Logging.LoggerFactory._providers">
+            <summary>
+            The _providers
+            </summary>
+        </member>
+        <member name="F:Es.Logging.LoggerFactory._loggers">
+            <summary>
+            The _loggers
+            </summary>
+        </member>
+        <member name="M:Es.Logging.LoggerFactory.AddProvider(Es.Logging.ILoggerProvider[])">
+            <summary>
+            Adds the provider.
+            </summary>
+            <param name="providers">The providers.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerFactory.CreateLogger(System.String)">
+            <summary>
+            Creates the logger.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>ILogger.</returns>
+        </member>
+        <member name="T:Es.Logging.LoggerFactoryExtensions">
+            <summary>
+            Class LoggerFactoryExtensions.
+            </summary>
+        </member>
+        <member name="M:Es.Logging.LoggerFactoryExtensions.AddProvider(Es.Logging.ILoggerFactory,Es.Logging.ILoggerProvider)">
+            <summary>
+            Adds the provider.
+            </summary>
+            <param name="factory">The factory.</param>
+            <param name="provider">The provider.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerFactoryExtensions.CreateLogger``1(Es.Logging.ILoggerFactory)">
+            <summary>
+            Creates the logger.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="factory">The factory.</param>
+            <returns>ILogger.</returns>
+        </member>
+        <member name="T:Es.Logging.LoggerManager">
+            <summary>
+            Class LoggerManager. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:Es.Logging.LoggerManager.GetCurrentClassLogger">
+            <summary>
+            Gets the current class logger.
+            </summary>
+            <returns>ILogger.</returns>
+        </member>
+        <member name="M:Es.Logging.LoggerManager.SetLoggerFactory(Es.Logging.ILoggerFactory)">
+            <summary>
+            Sets the logger factory.
+            </summary>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="M:Es.Logging.LoggerManager.GetLogger(System.String)">
+            <summary>
+            Gets the logger.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>ILogger.</returns>
+        </member>
+        <member name="M:Es.Logging.LoggerManager.GetLogger``1">
+            <summary>
+            Gets the logger.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>ILogger.</returns>
+        </member>
+        <member name="P:Es.Logging.LoggerManager.Factory">
+            <summary>
+            Gets the factory.
+            </summary>
+            <value>The factory.</value>
+        </member>
+        <member name="T:Es.Logging.LogLevel">
+            <summary>
+            Defines available log levels.
+            </summary>
+        </member>
+        <member name="F:Es.Logging.LogLevel.Trace">
+            <summary>
+            Trace log level.
+            </summary>
+        </member>
+        <member name="F:Es.Logging.LogLevel.Debug">
+            <summary>
+            Debug log level.
+            </summary>
+        </member>
+        <member name="F:Es.Logging.LogLevel.Info">
+            <summary>
+            Info log level.
+            </summary>
+        </member>
+        <member name="F:Es.Logging.LogLevel.Warn">
+            <summary>
+            Warn log level.
+            </summary>
+        </member>
+        <member name="F:Es.Logging.LogLevel.Error">
+            <summary>
+            Error log level.
+            </summary>
+        </member>
+        <member name="F:Es.Logging.LogLevel.Fatal">
+            <summary>
+            Fatal log level.
+            </summary>
+        </member>
+    </members>
+</doc>
