@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BeSmartService.DTO
 {
+    #region Save
     [DataContract]
     public class SaveTestCreatorUser
     {
@@ -38,15 +39,7 @@ namespace BeSmartService.DTO
         public string ImgUrl { get; set; }
     }
 
-    [DataContract]
-    public class DeleteTestCreatorUser
-    {
-        [DataMember]
-        public string Username { get; set; }
-    }
-
-
-    ///// interest composite 
+   
     [DataContract]
     public class SaveInterest
     {
@@ -57,15 +50,6 @@ namespace BeSmartService.DTO
         public string Name { get; set; }
     }
 
-    [DataContract]
-    public class DeleteInterest
-    {
-        [DataMember]
-        public int Id { get; set; }
-    }
-
-
-    // Subjects Composites
     [DataContract]
     public class SaveSubject
     {
@@ -80,9 +64,60 @@ namespace BeSmartService.DTO
     }
 
     [DataContract]
+    public class SaveStudentUser
+    {
+        [DataMember]
+        public Guid Id { get; set; }
+
+        [DataMember]
+        public string Password { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string LastName { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
+
+        [DataMember]
+        public string PhoneNumber { get; set; }
+    }
+
+    #endregion
+
+    #region Delete
+    [DataContract]
+    public class DeleteInterest
+    {
+        [DataMember]
+        public int Id { get; set; }
+    }
+    
+    [DataContract]
     public class DeleteSubject
     {
         [DataMember]
         public int Id { get; set; }
     }
+
+    [DataContract]
+    public class DeleteTestCreatorUser
+    {
+        [DataMember]
+        public string Username { get; set; }
+    }
+
+    [DataContract]
+    public class DeleteStudentUser
+    {
+        [DataMember]
+        public Guid Id { get; set; }
+    }
+
+    #endregion
 }

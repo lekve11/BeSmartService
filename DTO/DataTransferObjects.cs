@@ -58,4 +58,26 @@ namespace BeSmartService.DTO
         [DataMember]
         public Interest Interest { get; set; }
     }
+
+    [DataContract]
+    public class StudentUser
+    {
+        [DataMember]
+        public Guid Id { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string LastName { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
+
+        [DataMember]
+        public string PhoneNumber { get; set; }
+    }
 }

@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using BeSmartService.DAL;
 using BeSmartService.DTO;
 using BeSmartService.ExceptionHandlers;
 using BeSmartService.GOF;
@@ -26,12 +25,33 @@ namespace BeSmartService
 
         #region GET
 
+        public ResponseData<StudentUser> GetStudentUserById(string id)
+        {
+            ResponseData<StudentUser> response = new ResponseData<StudentUser>();
 
+            int currId = 0;
+
+            int.TryParse(id, out currId);
+
+            if (currId != 0)
+            {
+                StudentUserFacade facade = new StudentUserFacade();
+                try
+                {
+                    response.Data = facade.GetById(new Guid(id));
+                }
+                catch (Exception ex)
+                {
+                    ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
+                }
+            }
+
+            return response;
+        }
 
         public ResponseData<List<TestCreatorUser>> GetTestCreators()
         {
             ResponseData<List<TestCreatorUser>> response = new ResponseData<List<TestCreatorUser>>();
-
             
             var facade = new TestCreatorFacade();
             
@@ -152,6 +172,24 @@ namespace BeSmartService
             return response;
         }
 
+        public ResponseData<List<StudentUser>> GetStudentUsers()
+        {
+            ResponseData<List<StudentUser>> response = new ResponseData<List<StudentUser>>();
+
+            StudentUserFacade facade = new StudentUserFacade();
+
+            try
+            {
+                response.Data = facade.GetAll();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
+            }
+
+            return response;
+        }
+
         #endregion
 
         #region SAVE
@@ -205,6 +243,24 @@ namespace BeSmartService
             {
                 ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
 
+            }
+
+            return response;
+        }
+
+        public ResponseData<int> SaveStudentUser(SaveStudentUser saveStudentUser)
+        {
+            ResponseData<int> response = new ResponseData<int>();
+
+            StudentUserFacade facade = new StudentUserFacade();
+
+            try
+            {
+                response.Data = facade.Save(saveStudentUser);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
             }
 
             return response;
@@ -265,25 +321,33 @@ namespace BeSmartService
 
             return response;
         }
+
+        public ResponseData<object> DeleteStudentUser(DeleteStudentUser deleteStudentUser)
+        {
+            ResponseData<object> response = new ResponseData<object>();
+
+
+            StudentUserFacade facade = new StudentUserFacade();
+
+            try
+            {
+                facade.Delete(deleteStudentUser);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
+            }
+
+            return response;
+
+        }
         #endregion
 
         private string getSha256(string userName,string password)
         {
-            char[] charArr = userName.ToCharArray();
-
-            Array.Reverse(charArr);
-
-            SHA256Managed crypt = new SHA256Managed();
-            string hash = String.Empty;
-            password += new string(charArr);
-            byte[] crypto = crypt.ComputeHash(Encoding.ASCII.GetBytes(password), 0, Encoding.ASCII.GetByteCount(password));
-            foreach (byte theByte in crypto)
-            {
-                hash += theByte.ToString("x2");
-            }
-            return hash;
+            return Globals.GetSHA256(userName, password);
         }
 
-       
+        
     }
 }

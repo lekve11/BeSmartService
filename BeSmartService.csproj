@@ -99,6 +99,7 @@
     <Compile Include="DTO\ResponseData.cs" />
     <Compile Include="ExceptionHandlers\BeSmartExceptionHandler.cs" />
     <Compile Include="ExceptionHandlers\ExceptionsFactory.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="GOF\DTOFacades.cs" />
     <Compile Include="GOF\ExceptionValidator.cs" />
     <Compile Include="GOF\InterfaceSeggregation.cs" />

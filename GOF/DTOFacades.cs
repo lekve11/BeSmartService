@@ -214,4 +214,65 @@ namespace BeSmartService.GOF
             _subjectRepo.Delete(deletableId.Id);
         }
     }
+
+    public class StudentUserFacade : IRetrievableType<StudentUser, Guid>,ISavableType<SaveStudentUser>,IDeletableType<DeleteStudentUser>
+    {
+        IRepository<StudentUserDal, Guid> _repository;
+
+        public StudentUserFacade()
+        {
+            _repository = DefaultRepository<StudentUserDal, Guid>.GetDefaultRepo().DefaultRepo;
+        }
+
+        public void Delete(DeleteStudentUser deletableId)
+        {
+            _repository.Delete(deletableId.Id);
+        }
+
+        public List<StudentUser> GetAll()
+        {
+            var dals = _repository.GetAll();
+
+            if(dals!=null && dals.Count() != 0)
+                return dals.ToList().ConvertAll<StudentUser>(o => Mapper.Map<StudentUserDal, StudentUser>(o));
+
+            return null;
+        }
+
+        public StudentUser GetById(Guid id)
+        {
+            var dal = _repository.GetById(id);
+
+            if (dal != null)
+                return Mapper.Map<StudentUserDal, StudentUser>(dal);
+
+            return null;
+        }
+
+        public int Save(SaveStudentUser savableObj)
+        {
+            StudentUserDal currDal = new StudentUserDal()
+            {
+                Email=savableObj.Email,
+                Id=savableObj.Id,
+                ImageUrl=savableObj.ImageUrl,
+                LastName=savableObj.LastName,
+                Name=savableObj.Name,
+                Password=savableObj.Password,
+                PhoneNumber=savableObj.PhoneNumber              
+            };
+
+            if (savableObj.Id == default(Guid))
+            {
+                currDal.Id = Guid.NewGuid();
+                currDal.Password = Globals.GetSHA256(currDal.Id.ToString(), currDal.Password);//shesacvlelia saswrafod
+                return _repository.Insert(currDal);
+            }
+
+            currDal.Password = Globals.GetSHA256(currDal.Id.ToString(), currDal.Password);
+            _repository.Update(currDal);
+
+            return 0;
+        }
+    }
 }

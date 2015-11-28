@@ -15,6 +15,7 @@ namespace BeSmartService.DTO
             Mapper.CreateMap<TestCreatorUserDal, TestCreatorUser>().ForMember(o => o.UserName, m => m.MapFrom(s => s.Id));
             Mapper.CreateMap<InterestDal, Interest>();
             Mapper.CreateMap<SubjectDal, Subject>();
+            Mapper.CreateMap<StudentUserDal, StudentUser>();
         }
     }
 }

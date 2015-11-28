@@ -31,6 +31,12 @@ namespace BeSmartService
 
         [WebGet(UriTemplate ="Subjects/{id}",ResponseFormat =WebMessageFormat.Json)]
         ResponseData<Subject> GetSubjectById(string id);
+
+        [WebGet(UriTemplate ="StudentUsers",ResponseFormat =WebMessageFormat.Json)]
+        ResponseData<List<StudentUser>> GetStudentUsers();
+
+        [WebGet(UriTemplate ="StudentUsers/{id}",ResponseFormat =WebMessageFormat.Json)]
+        ResponseData<StudentUser> GetStudentUserById(string id);
         #endregion
 
         #region PUT
@@ -42,6 +48,9 @@ namespace BeSmartService
 
         [WebInvoke(UriTemplate ="Subjects",Method ="PUT",ResponseFormat =WebMessageFormat.Json,RequestFormat =WebMessageFormat.Json)]
         ResponseData<int> SaveSubject(SaveSubject saveSubject);
+
+        [WebInvoke(UriTemplate ="StudentUsers",Method="PUT",ResponseFormat =WebMessageFormat.Json,RequestFormat =WebMessageFormat.Json)]
+        ResponseData<int> SaveStudentUser(SaveStudentUser saveStudentUser);
         #endregion
 
         #region DELETE
@@ -53,6 +62,9 @@ namespace BeSmartService
 
         [WebInvoke(UriTemplate ="Subjects",Method ="DELETE",RequestFormat =WebMessageFormat.Json,ResponseFormat =WebMessageFormat.Json)]
         ResponseData<object> DeleteSubject(DeleteSubject deleteSubject);
+
+        [WebInvoke(UriTemplate="StudentUsers",Method ="DELETE",RequestFormat =WebMessageFormat.Json,ResponseFormat =WebMessageFormat.Json)]
+        ResponseData<object> DeleteStudentUser(DeleteStudentUser deleteStudentUser);
         #endregion
     }
 

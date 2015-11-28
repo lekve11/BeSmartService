@@ -68,4 +68,32 @@ namespace BeSmartService.DAL
         public int InterestId { get; set; }
     }
 
+    [DalObj(Alias ="besmart.StudentUser")]
+    public class StudentUserDal : IEntity<Guid>
+    {
+        [DalObj(IsPrimaryKey =true,Alias ="id")]
+        public Guid Id
+        {
+            get; set;
+        }
+
+        [DalObj(Alias ="Name")]
+        public string Name { get; set; }
+
+        [DalObj(Alias ="LastName")]
+        public string LastName { get; set; }
+
+        [DalObj(Alias ="ImageUrl")]
+        public string ImageUrl { get; set; }
+
+        [DalObj(Alias ="Password")]
+        public string Password { get; set; }
+
+        [DalObj(Alias ="Email")]
+        public string Email { get; set; }
+
+        [DalObj(Alias ="PhoneNumber")]
+        public string PhoneNumber { get; set; }
+    }
+
 }
