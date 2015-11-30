@@ -47,7 +47,7 @@ namespace BeSmartService.DTO
             Mapper.CreateMap<InterestDal, Interest>();
             Mapper.CreateMap<SubjectDal, Subject>().ForMember(i => i.Interest, map => map.MapFrom(d => interestCache.GetDtoFromCache(d.InterestId)));
             Mapper.CreateMap<StudentUserDal, StudentUser>();
-            Mapper.CreateMap<TestDal, Test>().ForMember(i => i.Subject, map => map.MapFrom(d => subjectCache.GetDtoFromCache(d.SubjectId))).ForMember(i=>i.TestCreator,map=>map.MapFrom(d=>d.CreatorId));
+            Mapper.CreateMap<TestDal, Test>().ForMember(i => i.Subject, map => map.MapFrom(d => subjectCache.GetDtoFromCache(d.SubjectId))).ForMember(i=>i.TestCreator,map=>map.MapFrom(d=> testCreatorCache.GetDtoFromCache(d.CreatorId)));
         }
     }
 }
