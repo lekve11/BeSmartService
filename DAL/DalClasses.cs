@@ -96,4 +96,33 @@ namespace BeSmartService.DAL
         public string PhoneNumber { get; set; }
     }
 
+    [DalObj(Alias = "besmart.Test")]
+    public class TestDal : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias ="Name")]
+        public string Name { get; set; }
+
+        [DalObj(Alias = "PublishDate")]
+        public DateTime PublishDate { get; set; }
+
+        [DalObj(Alias = "Price")]
+        public decimal Price { get; set; }
+
+        [DalObj(Alias = "DownloadCount")]
+        public int DownloadCount { get; set; }
+
+        [DalObj(Alias = "SubjectId")]
+        public int SubjectId { get; set; }
+
+        [DalObj(Alias = "Comment")]
+        public string Comment { get; set; }
+
+        [DalObj(Alias = "CreatorId")]
+        public string CreatorId { get; set; }
+
+
+    }
 }

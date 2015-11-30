@@ -87,4 +87,34 @@ namespace BeSmartService.DTO
         [DataMember]
         public string PhoneNumber { get; set; }
     }
+
+    [DataContract]
+    public class Test : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+        
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public DateTime PublishDate { get; set; }
+
+        [DataMember]
+        public decimal Price { get; set; }
+
+        [DataMember]
+        public int DownloadCount { get; set; }
+
+        [DataMember]
+        public Subject Subject { get; set; }
+
+        [DataMember]
+        public string Comment { get; set; }
+
+        [DataMember]
+        public TestCreatorUser TestCreator { get; set; }
+
+    }
 }

@@ -38,13 +38,16 @@ namespace BeSmartService.DTO
     public static class AutoMapperConfigurator
     {
         public static void Configure() {
-            
+            DTOCache<Interest, int> interestCache = new DTOCache<Interest, int>(new InterestFacade());
+            DTOCache<Subject, int> subjectCache = new DTOCache<Subject, int>(new SubjectFacade());
+            DTOCache<TestCreatorUser, string> testCreatorCache = new DTOCache<TestCreatorUser, string>(new TestCreatorFacade());
+
+
             Mapper.CreateMap<TestCreatorUserDal, TestCreatorUser>();
             Mapper.CreateMap<InterestDal, Interest>();
-
-            DTOCache<Interest, int> interestCache = new DTOCache<Interest, int>(new InterestFacade());
             Mapper.CreateMap<SubjectDal, Subject>().ForMember(i => i.Interest, map => map.MapFrom(d => interestCache.GetDtoFromCache(d.InterestId)));
             Mapper.CreateMap<StudentUserDal, StudentUser>();
+            Mapper.CreateMap<TestDal, Test>().ForMember(i => i.Subject, map => map.MapFrom(d => subjectCache.GetDtoFromCache(d.SubjectId))).ForMember(i=>i.TestCreator,map=>map.MapFrom(d=>d.CreatorId));
         }
     }
 }

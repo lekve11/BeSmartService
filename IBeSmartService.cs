@@ -37,6 +37,12 @@ namespace BeSmartService
 
         [WebGet(UriTemplate ="StudentUsers/{id}",ResponseFormat =WebMessageFormat.Json)]
         ResponseData<StudentUser> GetStudentUserById(string id);
+
+        [WebGet(UriTemplate = "Tests", ResponseFormat = WebMessageFormat.Json)]
+        ResponseData<List<Test>> GetTests();
+
+        [WebGet(UriTemplate = "Tests/{id}", ResponseFormat = WebMessageFormat.Json)]
+        ResponseData<Test> GetTestById(string id);
         #endregion
 
         #region PUT

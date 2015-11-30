@@ -193,6 +193,38 @@ namespace BeSmartService
             return response;
         }
 
+
+        public ResponseData<List<Test>> GetTests()
+        {
+            ResponseData<List<Test>> resp = new ResponseData<List<Test>>();
+            try
+            {
+                resp.Data = new TestFacade().GetAll();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
+        }
+
+        public ResponseData<Test> GetTestById(string id)
+        {
+            ResponseData<Test> resp = new ResponseData<Test>();
+            try
+            {
+                int i = 0;
+                Int32.TryParse(id, out i);
+                if (i != 0)
+                    resp.Data = new TestFacade().GetById(i);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
+        }
+
         #endregion
 
         #region SAVE

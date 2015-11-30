@@ -247,4 +247,32 @@ namespace BeSmartService.GOF
             return 0;
         }
     }
+
+    public class TestFacade : IRetrievableType<Test, int>
+    {
+        IRepository<TestDal, int> _repo;
+
+        SubjectFacade subj = new SubjectFacade();
+        TestCreatorFacade creator = new TestCreatorFacade();
+
+        public TestFacade()
+        {
+            _repo = DefaultRepository<TestDal, int>.GetDefaultRepo().DefaultRepo;
+        }
+
+        public List<Test> GetAll()
+        {
+            var dals = _repo.GetAll().ToList();
+            var dtos = dals.ConvertAll<Test>(i => Mapper.Map<TestDal, Test>(i));
+
+            return dtos;
+        }
+
+        public Test GetById(int id)
+        {
+            var dal = _repo.GetById(id);
+            
+            return Mapper.Map<TestDal, Test>(dal);
+        }
+    }
 }
