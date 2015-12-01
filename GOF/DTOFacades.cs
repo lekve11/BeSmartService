@@ -133,13 +133,10 @@ namespace BeSmartService.GOF
     public class SubjectFacade : IRetrievableType<Subject, int>,ISavableType<SaveSubject>,IDeletableType<DeleteSubject>
     {
         IRepository<SubjectDal, int> _subjectRepo;
-        IRepository<InterestDal, int> _interestRepo;
 
         public SubjectFacade()
         {
             _subjectRepo = DefaultRepository<SubjectDal, int>.GetDefaultRepo().DefaultRepo;
-            _interestRepo = DefaultRepository<InterestDal, int>.GetDefaultRepo().DefaultRepo;
-
         }
 
         List<Interest> _interestsCache = new List<Interest>();
@@ -151,34 +148,10 @@ namespace BeSmartService.GOF
             if (subjectDals == null || subjectDals.Count()==0)
                 return null;
 
-            List<Subject> subjectList = new List<Subject>();
+            return subjectDals.ToList().ConvertAll(o => Mapper.Map<SubjectDal, Subject>(o));
 
-            foreach (var dalItem in subjectDals)
-            {
-                var subjectDTO = Mapper.Map<SubjectDal, Subject>(dalItem);
-                subjectDTO.Interest = this.getInterestDtoFromDal(dalItem.InterestId);
-                subjectList.Add(subjectDTO);
-               
-            }
-
-            return subjectList;
         }
 
-        private Interest getInterestDtoFromDal(int interestId)
-        {
-            Interest currInterest =_interestsCache.Where(o => o.Id == interestId).SingleOrDefault();
-
-            if (currInterest != null)
-               return currInterest;
-
-            var dalObj = _interestRepo.GetById(interestId);
-
-            currInterest = Mapper.Map<InterestDal, Interest>(dalObj);
-
-            _interestsCache.Add(currInterest);
-
-            return currInterest;
-        }
 
         public Subject GetById(int id)
         {
@@ -188,7 +161,6 @@ namespace BeSmartService.GOF
                 return null;
 
             var sub = Mapper.Map<SubjectDal, Subject>(currDal);
-            sub.Interest = this.getInterestDtoFromDal(currDal.InterestId);
 
             return sub;
         }

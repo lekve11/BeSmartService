@@ -6,6 +6,8 @@ using System.Security.Cryptography;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using AutoMapper;
+using BeSmartService.DAL;
 using BeSmartService.DTO;
 using BeSmartService.ExceptionHandlers;
 using BeSmartService.GOF;
@@ -21,6 +23,7 @@ namespace BeSmartService
         {
             XmlConfigurator.Configure();
             AutoMapperConfigurator.Configure();
+            
         }
 
         #region GET

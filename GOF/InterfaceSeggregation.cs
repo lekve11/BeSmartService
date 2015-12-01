@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BeSmartService.DTO;
 
 namespace BeSmartService.GOF
 {
@@ -16,7 +17,7 @@ namespace BeSmartService.GOF
         void Delete(T deletableId);
     }
 
-    public interface IRetrievableType<T,S>
+    public interface IRetrievableType<T,S> where T :IDTO<S>
     {
          List<T> GetAll();
 

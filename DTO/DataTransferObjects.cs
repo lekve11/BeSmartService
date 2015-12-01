@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace BeSmartService.DTO
 {
-    [DataContract]
-    public class TestCreatorUser
-    {
-        [DataMember]
-        public string UserName { get; set; }
+    public interface IDTO<T> {
 
+        T Id { get; set; }
+    }
+
+    [DataContract]
+    public class TestCreatorUser:IDTO<string>
+    {
         [DataMember]
         public string Email { get; set; }
 
@@ -34,10 +36,15 @@ namespace BeSmartService.DTO
         [DataMember]
         public string ImgUrl { get; set; }
 
+        [DataMember(Name ="UserName")]
+        public string Id
+        {
+            get; set;
+        }
     }
 
     [DataContract]
-    public class Interest
+    public class Interest:IDTO<int>
     {
         [DataMember]
         public int Id { get; set; }
@@ -47,7 +54,7 @@ namespace BeSmartService.DTO
     }
 
     [DataContract]
-    public class Subject
+    public class Subject:IDTO<int>
     {
         [DataMember]
         public int Id { get; set; }
@@ -60,7 +67,7 @@ namespace BeSmartService.DTO
     }
 
     [DataContract]
-    public class StudentUser
+    public class StudentUser : IDTO<Guid>
     {
         [DataMember]
         public Guid Id { get; set; }
