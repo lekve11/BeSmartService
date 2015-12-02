@@ -57,6 +57,9 @@ namespace BeSmartService
 
         [WebInvoke(UriTemplate ="StudentUsers",Method="PUT",ResponseFormat =WebMessageFormat.Json,RequestFormat =WebMessageFormat.Json)]
         ResponseData<int> SaveStudentUser(SaveStudentUser saveStudentUser);
+
+        [WebInvoke(UriTemplate = "Tests", Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        ResponseData<int> SaveTest(SaveTest saveTest);
         #endregion
 
         #region DELETE
@@ -71,6 +74,9 @@ namespace BeSmartService
 
         [WebInvoke(UriTemplate="StudentUsers",Method ="DELETE",RequestFormat =WebMessageFormat.Json,ResponseFormat =WebMessageFormat.Json)]
         ResponseData<object> DeleteStudentUser(DeleteStudentUser deleteStudentUser);
+
+        [WebInvoke(UriTemplate = "Tests", Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        ResponseData<object> DeleteTest(DeleteTest deleteTest);
         #endregion
     }
 

@@ -248,7 +248,7 @@ namespace BeSmartService.GOF
         }
     }
 
-    public class TestFacade : IRetrievableType<Test, int>
+    public class TestFacade : IRetrievableType<Test, int>, ISavableType<SaveTest>, IDeletableType<DeleteTest>
     {
         IRepository<TestDal, int> _repo;
 
@@ -273,6 +273,32 @@ namespace BeSmartService.GOF
             var dal = _repo.GetById(id);
             
             return Mapper.Map<TestDal, Test>(dal);
+        }
+
+        public int Save(SaveTest savableObj)
+        {
+            TestDal dalTest = new TestDal()
+            {
+                Comment = savableObj.Comment,
+                CreatorId = savableObj.CreatorId,
+                DownloadCount = savableObj.DownloadCount,
+                Id = savableObj.Id,
+                Name = savableObj.Name,
+                Price = savableObj.Price,
+                PublishDate = savableObj.PublishDate,
+                SubjectId = savableObj.SubjectId
+            };
+
+            if (savableObj.Id == default(int))
+                return _repo.Insert(dalTest);
+
+            _repo.Update(dalTest);
+            return 0;
+        }
+
+        public void Delete(DeleteTest deletableId)
+        {
+            _repo.Delete(deletableId.Id);
         }
     }
 }

@@ -300,6 +300,25 @@ namespace BeSmartService
 
             return response;
         }
+
+        public ResponseData<int> SaveTest(SaveTest saveTest)
+        {
+            ResponseData<int> response = new ResponseData<int>();
+
+            TestFacade facade = new TestFacade();
+
+            try
+            {
+                response.Data = facade.Save(saveTest);
+            }
+
+            catch(Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
+            }
+
+            return response;
+        }
         #endregion
 
         #region DELETE
@@ -376,12 +395,33 @@ namespace BeSmartService
             return response;
 
         }
+
+        public ResponseData<object> DeleteTest(DeleteTest deleteTest)
+        {
+            ResponseData<object> response = new ResponseData<object>();
+
+
+            TestFacade facade = new TestFacade();
+
+            try
+            {
+                facade.Delete(deleteTest);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
+            }
+
+            return response;
+        }
         #endregion
 
         private string getSha256(string userName,string password)
         {
             return Globals.GetSHA256(userName, password);
         }
+
+        
 
         
     }

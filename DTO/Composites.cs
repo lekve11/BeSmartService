@@ -88,6 +88,34 @@ namespace BeSmartService.DTO
         public string PhoneNumber { get; set; }
     }
 
+    [DataContract]
+    public class SaveTest
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public DateTime PublishDate { get; set; }
+
+        [DataMember]
+        public decimal Price { get; set; }
+
+        [DataMember]
+        public int DownloadCount { get; set; }
+
+        [DataMember]
+        public int SubjectId { get; set; }
+
+        [DataMember]
+        public string Comment { get; set; }
+
+        [DataMember]
+        public string CreatorId { get; set; }
+    }
+
     #endregion
 
     #region Delete
@@ -119,5 +147,11 @@ namespace BeSmartService.DTO
         public Guid Id { get; set; }
     }
 
+    [DataContract]
+    public class DeleteTest
+    {
+        [DataMember]
+        public int Id { get; set; }
+    }
     #endregion
 }

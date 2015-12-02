@@ -9,7 +9,7 @@ using BeSmartService.GOF;
 
 namespace BeSmartService.DTO
 {
-    public  class DTOCache<T,S> where T :IDTO<S>
+    public class DTOCache<T,S> where T :IDTO<S>
     {
 
         private  IRetrievableType<T, S> _retrievable;
