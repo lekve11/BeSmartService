@@ -117,4 +117,20 @@ namespace BeSmartService.DTO
         public TestCreatorUser TestCreator { get; set; }
 
     }
+
+    [DataContract]
+    public class TestRank : IDTO<int>
+    {
+        [DataMember]
+        public int Id
+        {
+            get; set;
+        }
+
+        [DataMember]
+        public int TestId { get; set; }
+        
+        [DataMember]
+        public byte Rank { get; set; }
+    }
 }

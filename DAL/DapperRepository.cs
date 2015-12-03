@@ -21,7 +21,7 @@ namespace BeSmartService.DAL
         }
 
         public IEnumerable<T> GetAll()
-        {
+        { 
            using(var db = new SqlConnection(_connectionString))
             {
                 var data = db.Query<T>(Reflections.GetQuery(typeof(T)));
@@ -68,8 +68,7 @@ namespace BeSmartService.DAL
             }
 
         }
-
-
+        
         public void Update(T obj)
         {
             string tableName = Reflections.GetTableName(typeof(T));

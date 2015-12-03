@@ -24,7 +24,7 @@ namespace BeSmartService.GOF
 
             if(sqlException.Errors[0].Number==547)
             {
-                Message = "არ შ ეგიძლება მოცემული ინფორმაციის წაშლა რადგან სხვა ადგილასაა გამოყენებული";
+                Message = "არ შეიძლება ინფორმაციის წაშლა რადგან სხვა ადგილასაა გამოყენებული";
                 return true;
 
             }

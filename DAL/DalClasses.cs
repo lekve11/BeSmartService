@@ -125,4 +125,23 @@ namespace BeSmartService.DAL
 
 
     }
+
+    [DalObj(Alias ="besmart.TestRank")]
+    public class TestRankDal : IEntity<int>
+    {
+        [DalObj(Alias ="Id",IsPrimaryKey =true)]
+        public int Id
+        {
+            get; set;
+        }
+
+        [DalObj(Alias ="TestId")]
+        public int TestId { get; set; }
+
+        [DalObj(Alias ="StudentUserId")]
+        public Guid StudentUserId { get; set; }
+
+        [DalObj(Alias ="Rank")]
+        byte Rank { get; set; }
+    }
 }
