@@ -30,11 +30,6 @@ E:\BeSmart\BeSmartService\BeSmartService\obj\Debug\BeSmartService.pdb
 E:\BeSmartService\bin\BeSmartService.dll.config
 E:\BeSmartService\bin\BeSmartService.dll
 E:\BeSmartService\bin\BeSmartService.pdb
-E:\BeSmartService\bin\AutoMapper.xml
-E:\BeSmartService\bin\Dapper.pdb
-E:\BeSmartService\bin\Dapper.xml
-E:\BeSmartService\bin\Es.Logging.xml
-E:\BeSmartService\bin\log4net.xml
-E:\BeSmartService\obj\Debug\BeSmartService.csprojResolveAssemblyReference.cache
 E:\BeSmartService\obj\Debug\BeSmartService.dll
 E:\BeSmartService\obj\Debug\BeSmartService.pdb
+E:\BeSmartService\obj\Debug\BeSmartService.csprojResolveAssemblyReference.cache

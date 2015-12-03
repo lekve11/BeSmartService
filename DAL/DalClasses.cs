@@ -122,10 +122,19 @@ namespace BeSmartService.DAL
 
         [DalObj(Alias = "CreatorId")]
         public string CreatorId { get; set; }
-
-
     }
 
+    [DalObj(Alias ="besmart.QuestionType")]
+    public class QuestionTypeDal : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "Name")]
+        public string Name { get; set; }
+    }
+
+<<<<<<< HEAD
     [DalObj(Alias ="besmart.TestRank")]
     public class TestRankDal : IEntity<int>
     {
@@ -144,4 +153,17 @@ namespace BeSmartService.DAL
         [DalObj(Alias ="Rank")]
         byte Rank { get; set; }
     }
+=======
+    [DalObj(Alias ="besmart.Achievement")]
+    public class AchievementDal : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "Name")]
+        public string Name { get; set; }
+    }
+         
+
+>>>>>>> 7a1f1728e2224104a1b48ec2b76026bfdb7b9d22
 }

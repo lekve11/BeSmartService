@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace BeSmartService.DTO
 {
-    public interface IDTO<T> {
+    public interface IDTO<T>
+    {
 
         T Id { get; set; }
     }
 
     [DataContract]
-    public class TestCreatorUser:IDTO<string>
+    public class TestCreatorUser : IDTO<string>
     {
         [DataMember]
         public string Email { get; set; }
@@ -36,7 +37,7 @@ namespace BeSmartService.DTO
         [DataMember]
         public string ImgUrl { get; set; }
 
-        [DataMember(Name ="UserName")]
+        [DataMember(Name = "UserName")]
         public string Id
         {
             get; set;
@@ -44,7 +45,7 @@ namespace BeSmartService.DTO
     }
 
     [DataContract]
-    public class Interest:IDTO<int>
+    public class Interest : IDTO<int>
     {
         [DataMember]
         public int Id { get; set; }
@@ -54,7 +55,7 @@ namespace BeSmartService.DTO
     }
 
     [DataContract]
-    public class Subject:IDTO<int>
+    public class Subject : IDTO<int>
     {
         [DataMember]
         public int Id { get; set; }
@@ -93,7 +94,7 @@ namespace BeSmartService.DTO
     {
         [DataMember]
         public int Id { get; set; }
-        
+
 
         [DataMember]
         public string Name { get; set; }
@@ -115,7 +116,25 @@ namespace BeSmartService.DTO
 
         [DataMember]
         public TestCreatorUser TestCreator { get; set; }
+    }
+    [DataContract]
+    public class QuestionType : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
 
+        [DataMember]
+        public string Name { get; set; }
+    }
+
+    [DataContract]
+    public class Achievement : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
     }
 
     [DataContract]
@@ -134,3 +153,4 @@ namespace BeSmartService.DTO
         public byte Rank { get; set; }
     }
 }
+

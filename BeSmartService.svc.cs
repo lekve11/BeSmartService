@@ -23,7 +23,7 @@ namespace BeSmartService
         {
             XmlConfigurator.Configure();
             AutoMapperConfigurator.Configure();
-            
+
         }
 
         #region GET
@@ -55,9 +55,9 @@ namespace BeSmartService
         public ResponseData<List<TestCreatorUser>> GetTestCreators()
         {
             ResponseData<List<TestCreatorUser>> response = new ResponseData<List<TestCreatorUser>>();
-            
+
             var facade = new TestCreatorFacade();
-            
+
             try
             {
                 response.Data = facade.GetAll();
@@ -66,7 +66,7 @@ namespace BeSmartService
             {
                 ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
             }
-           
+
 
             return response;
         }
@@ -121,8 +121,8 @@ namespace BeSmartService
 
             try
             {
-                if(currId!=0)
-                response.Data = facade.GetById(currId);
+                if (currId != 0)
+                    response.Data = facade.GetById(currId);
             }
             catch (Exception ex)
             {
@@ -224,7 +224,70 @@ namespace BeSmartService
             }
             return resp;
         }
+        public ResponseData<List<QuestionType>> GetQuestionTypes()
+        {
+            ResponseData<List<QuestionType>> resp = new ResponseData<List<QuestionType>>();
+            try
+            {
+                resp.Data = new QuestionTypeFacade().GetAll();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
+        }
 
+        public ResponseData<QuestionType> GetQuestionTypeById(string id)
+        {
+            ResponseData<QuestionType> resp = new ResponseData<QuestionType>();
+
+            try
+            {
+                int i = 0;
+                Int32.TryParse(id, out i);
+                if (i != 0)
+                    resp.Data = new QuestionTypeFacade().GetById(i);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
+        }
+
+        public ResponseData<List<Achievement>> GetAchievements()
+        {
+            ResponseData<List<Achievement>> resp = new ResponseData<List<Achievement>>();
+            try
+            {
+                resp.Data = new AchievementFacade().GetAll();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
+        }
+
+        public ResponseData<Achievement> GetAchievementById(string id)
+        {
+            ResponseData<Achievement> resp = new ResponseData<Achievement>();
+
+            try
+            {
+                int i = 0;
+                Int32.TryParse(id, out i);
+                if (i != 0)
+                    resp.Data = new AchievementFacade().GetById(i);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
+        }
+        
         #endregion
 
         #region SAVE
@@ -251,7 +314,7 @@ namespace BeSmartService
         public ResponseData<int> SaveInterest(SaveInterest savableData)
         {
             ResponseData<int> resp = new ResponseData<int>();
-            
+
             try
             {
                 InterestFacade facade = new InterestFacade();
@@ -312,12 +375,46 @@ namespace BeSmartService
                 response.Data = facade.Save(saveTest);
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
             }
 
             return response;
+        }
+
+        public ResponseData<int> SaveQuestionType(SaveQuestionType saveQuestionType)
+        {
+            ResponseData<int> resp = new ResponseData<int>();
+
+            QuestionTypeFacade facade = new QuestionTypeFacade();
+
+            try
+            {
+                resp.Data = facade.Save(saveQuestionType);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
+        }
+
+        public ResponseData<int> SaveAchievement(SaveAchievement saveAchievement)
+        {
+            ResponseData<int> resp = new ResponseData<int>();
+
+            AchievementFacade facade = new AchievementFacade();
+
+            try
+            {
+                resp.Data = facade.Save(saveAchievement);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
         }
         #endregion
 
@@ -414,15 +511,45 @@ namespace BeSmartService
 
             return response;
         }
+
+        public ResponseData<object> DeleteQuestionType(DeleteQuestionType deleteQuestionType)
+        {
+            ResponseData<object> resp = new ResponseData<object>();
+
+            QuestionTypeFacade fac = new QuestionTypeFacade();
+
+            try
+            {
+                fac.Delete(deleteQuestionType);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
+        }
+
+        public ResponseData<object> DeleteAchievement(DeleteAchievement deleteAchievement)
+        {
+            ResponseData<object> resp = new ResponseData<object>();
+
+            AchievementFacade fac = new AchievementFacade();
+
+            try
+            {
+                fac.Delete(deleteAchievement);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(resp).Handle(ex);
+            }
+            return resp;
+        }
         #endregion
 
-        private string getSha256(string userName,string password)
+        private string getSha256(string userName, string password)
         {
             return Globals.GetSHA256(userName, password);
         }
-
-        
-
-        
     }
 }
