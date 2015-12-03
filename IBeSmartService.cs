@@ -43,6 +43,18 @@ namespace BeSmartService
 
         [WebGet(UriTemplate = "Tests/{id}", ResponseFormat = WebMessageFormat.Json)]
         ResponseData<Test> GetTestById(string id);
+
+        [WebGet(UriTemplate = "QuestionTypes", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        ResponseData<List<QuestionType>> GetQuestionTypes();
+
+        [WebGet(UriTemplate = "QuestionTypes/{id}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        ResponseData<QuestionType> GetQuestionTypeById(string id);
+
+        [WebGet(UriTemplate = "Achievements", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        ResponseData<List<Achievement>> GetAchievements();
+
+        [WebGet(UriTemplate = "Achievements/{id}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        ResponseData<Achievement> GetAchievementById(string id);
         #endregion
 
         #region PUT
@@ -60,6 +72,12 @@ namespace BeSmartService
 
         [WebInvoke(UriTemplate = "Tests", Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         ResponseData<int> SaveTest(SaveTest saveTest);
+
+        [WebInvoke(UriTemplate = "QuestionTypes", Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        ResponseData<int> SaveQuestionType(SaveQuestionType saveQuestionType);
+
+        [WebInvoke(UriTemplate = "Achievements", Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        ResponseData<int> SaveAchievement(SaveAchievement saveAchievement);
         #endregion
 
         #region DELETE
@@ -77,6 +95,12 @@ namespace BeSmartService
 
         [WebInvoke(UriTemplate = "Tests", Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         ResponseData<object> DeleteTest(DeleteTest deleteTest);
+
+        [WebInvoke(UriTemplate = "QuestionTypes", Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        ResponseData<object> DeleteQuestionType(DeleteQuestionType deleteQuestionType);
+
+        [WebInvoke(UriTemplate = "Achievements", Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        ResponseData<object> DeleteAchievement(DeleteAchievement deleteAchievement);
         #endregion
     }
 

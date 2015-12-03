@@ -116,6 +116,25 @@ namespace BeSmartService.DTO
         public string CreatorId { get; set; }
     }
 
+    [DataContract]
+    public class SaveQuestionType
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+    }
+
+    [DataContract]
+    public class SaveAchievement
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+    }
     #endregion
 
     #region Delete
@@ -153,5 +172,20 @@ namespace BeSmartService.DTO
         [DataMember]
         public int Id { get; set; }
     }
+
+    [DataContract]
+    public class DeleteQuestionType
+    {
+        [DataMember]
+        public int Id { get; set; }
+    }
+
+    [DataContract]
+    public class DeleteAchievement
+    {
+        [DataMember]
+        public int Id { get; set; }
+    }
+
     #endregion
 }

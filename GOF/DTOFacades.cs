@@ -301,4 +301,88 @@ namespace BeSmartService.GOF
             _repo.Delete(deletableId.Id);
         }
     }
+
+    public class QuestionTypeFacade : IRetrievableType<QuestionType, int>, ISavableType<SaveQuestionType>, IDeletableType<DeleteQuestionType>
+    {
+        IRepository<QuestionTypeDal, int> _rep;
+
+        public QuestionTypeFacade()
+        {
+            _rep = DefaultRepository<QuestionTypeDal, int>.GetDefaultRepo().DefaultRepo;
+        }
+
+        public void Delete(DeleteQuestionType deletableId)
+        {
+            _rep.Delete(deletableId.Id);
+        }
+
+        public List<QuestionType> GetAll()
+        {
+            return _rep.GetAll().ToList().ConvertAll<QuestionType>(o => Mapper.Map<QuestionTypeDal, QuestionType>(o));
+        }
+
+        public QuestionType GetById(int id)
+        {
+            return Mapper.Map<QuestionTypeDal, QuestionType>(_rep.GetById(id));
+        }
+
+        public int Save(SaveQuestionType savableObj)
+        {
+            QuestionTypeDal dal = new QuestionTypeDal()
+            {
+                Id = savableObj.Id,
+                Name = savableObj.Name
+            };
+
+            if (savableObj.Id == default(int))
+            {
+                return _rep.Insert(dal);
+            }
+
+            _rep.Update(dal);
+            return 0;
+        }
+    }
+
+    public class AchievementFacade : IRetrievableType<Achievement, int>, ISavableType<SaveAchievement>, IDeletableType<DeleteAchievement>
+    {
+        IRepository<AchievementDal, int> _rep;
+
+        public AchievementFacade()
+        {
+            _rep = DefaultRepository<AchievementDal, int>.GetDefaultRepo().DefaultRepo;
+        }
+
+        public void Delete(DeleteAchievement deletableId)
+        {
+            _rep.Delete(deletableId.Id);
+        }
+
+        public List<Achievement> GetAll()
+        {
+            return _rep.GetAll().ToList().ConvertAll<Achievement>(o => Mapper.Map<AchievementDal, Achievement>(o));
+        }
+
+        public Achievement GetById(int id)
+        {
+            return Mapper.Map<AchievementDal, Achievement>(_rep.GetById(id));
+        }
+
+        public int Save(SaveAchievement savableObj)
+        {
+            AchievementDal dal = new AchievementDal()
+            {
+                Id = savableObj.Id,
+                Name = savableObj.Name
+            };
+
+            if (savableObj.Id == default(int))
+            {
+                return _rep.Insert(dal);
+            }
+
+            _rep.Update(dal);
+            return 0;
+        }
+    }
 }

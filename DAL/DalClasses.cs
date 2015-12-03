@@ -122,7 +122,27 @@ namespace BeSmartService.DAL
 
         [DalObj(Alias = "CreatorId")]
         public string CreatorId { get; set; }
-
-
     }
+
+    [DalObj(Alias ="besmart.QuestionType")]
+    public class QuestionTypeDal : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "Name")]
+        public string Name { get; set; }
+    }
+
+    [DalObj(Alias ="besmart.Achievement")]
+    public class AchievementDal : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "Name")]
+        public string Name { get; set; }
+    }
+         
+
 }
