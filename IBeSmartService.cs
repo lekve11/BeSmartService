@@ -55,6 +55,9 @@ namespace BeSmartService
 
         [WebGet(UriTemplate = "Achievements/{id}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         ResponseData<Achievement> GetAchievementById(string id);
+
+        [WebGet(UriTemplate = "RankByTest/{testId}",ResponseFormat =WebMessageFormat.Json,RequestFormat =WebMessageFormat.Json)]
+        ResponseData<float> GetTestRankById(string testId);
         #endregion
 
         #region PUT

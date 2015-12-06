@@ -18,4 +18,9 @@ namespace BeSmartService.DAL
 
         void Update(T obj);
     }
+
+    public interface IRepositoryProcedure<T,S>:IRepository<T,S> where T : IEntity<S>
+    {
+        K CallProcedure<K>(string name, Dictionary<string, object> argumentDict);
+    }
 }

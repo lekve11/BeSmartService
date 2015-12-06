@@ -23,7 +23,6 @@ namespace BeSmartService
         {
             XmlConfigurator.Configure();
             AutoMapperConfigurator.Configure();
-
         }
 
         #region GET
@@ -287,7 +286,24 @@ namespace BeSmartService
             }
             return resp;
         }
-        
+
+        public ResponseData<float> GetTestRankById(string testId)
+        {
+            ResponseData<float> response = new ResponseData<float>();
+
+            int currInt = default(int);
+
+            int.TryParse(testId, out currInt);
+
+            if (currInt != default(int))
+            {
+                RankFacade rankFacade = new RankFacade();
+                response.Data = rankFacade.GetTestRank(currInt);
+            }
+            
+            return response;
+        }
+
         #endregion
 
         #region SAVE
@@ -551,5 +567,6 @@ namespace BeSmartService
         {
             return Globals.GetSHA256(userName, password);
         }
+
     }
 }

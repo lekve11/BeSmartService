@@ -8,9 +8,18 @@ using System.Data.SqlClient;
 
 namespace BeSmartService.DAL
 {
-    public class DapperRepository<T,S> : IRepository<T,S> where T : IEntity<S>
+    public class DapperRepository<T,S> : IRepositoryProcedure<T,S> where T : IEntity<S>
     {
-        private string _connectionString = @"Server=tcp:r461y1rqaa.database.windows.net,1433;Database=BeSmart;User ID=lekve@r461y1rqaa;Password=Ooprogramming1;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;";
+        private string _connectionString = @"Data Source=.\LEKVE;Initial Catalog=BeSmart;Integrated Security=True";
+
+
+        public K CallProcedure<K>(string name, Dictionary<string,object> argumentDict)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                return db.Query<K>(name, argumentDict, commandType: System.Data.CommandType.StoredProcedure).SingleOrDefault();
+            }
+        }
 
         public void Delete(S objId)
         {
@@ -97,4 +106,5 @@ namespace BeSmartService.DAL
             }
         }
     }
+
 }

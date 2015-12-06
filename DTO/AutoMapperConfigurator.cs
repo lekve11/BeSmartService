@@ -13,7 +13,7 @@ namespace BeSmartService.DTO
     {
 
         private  IRetrievableType<T, S> _retrievable;
-        private   List<T> _cachedData = new List<T>();
+        private  List<T> _cachedData = new List<T>();
 
         public DTOCache(IRetrievableType<T, S> retrievable)
         {

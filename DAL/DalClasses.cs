@@ -134,7 +134,7 @@ namespace BeSmartService.DAL
         public string Name { get; set; }
     }
 
-<<<<<<< HEAD
+
     [DalObj(Alias ="besmart.TestRank")]
     public class TestRankDal : IEntity<int>
     {
@@ -153,7 +153,7 @@ namespace BeSmartService.DAL
         [DalObj(Alias ="Rank")]
         byte Rank { get; set; }
     }
-=======
+
     [DalObj(Alias ="besmart.Achievement")]
     public class AchievementDal : IEntity<int>
     {
@@ -165,5 +165,5 @@ namespace BeSmartService.DAL
     }
          
 
->>>>>>> 7a1f1728e2224104a1b48ec2b76026bfdb7b9d22
+
 }

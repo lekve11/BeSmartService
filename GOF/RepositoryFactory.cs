@@ -10,7 +10,6 @@ namespace BeSmartService.GOF
     //singletone
     public  class DefaultRepository<T,S> where T :IEntity<S>
     {
-
         public  IRepository<T,S> DefaultRepo { get; private set; }
 
         private static DefaultRepository<T, S> _singleton;
