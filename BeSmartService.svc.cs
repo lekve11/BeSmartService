@@ -298,7 +298,14 @@ namespace BeSmartService
             if (currInt != default(int))
             {
                 RankFacade rankFacade = new RankFacade();
-                response.Data = rankFacade.GetTestRank(currInt);
+                try
+                {
+                    response.Data = rankFacade.GetTestRank(currInt);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
+                }
             }
             
             return response;

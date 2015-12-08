@@ -10,8 +10,7 @@ namespace BeSmartService.DAL
 {
     public class DapperRepository<T,S> : IRepositoryProcedure<T,S> where T : IEntity<S>
     {
-        private string _connectionString = @"Data Source=.\LEKVE;Initial Catalog=BeSmart;Integrated Security=True";
-
+        private string _connectionString = @"Data Source=r461y1rqaa.database.windows.net;Initial Catalog=BeSmart;Integrated Security=False;User ID=lekve;Password=Ooprogramming1;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public K CallProcedure<K>(string name, Dictionary<string,object> argumentDict)
         {

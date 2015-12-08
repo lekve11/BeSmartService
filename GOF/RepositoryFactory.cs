@@ -12,6 +12,8 @@ namespace BeSmartService.GOF
     {
         public  IRepository<T,S> DefaultRepo { get; private set; }
 
+        public IRepositoryProcedure<T,S> DefaultRepoWithProcedure { get; set; }
+
         private static DefaultRepository<T, S> _singleton;
         private  RepositoryCreator<T, S> _repoCreator;
 
@@ -20,6 +22,7 @@ namespace BeSmartService.GOF
             _repoCreator = new DapperRepositoryCreator<T, S>();
 
             DefaultRepo = _repoCreator.FactoryMethod();
+            DefaultRepoWithProcedure = _repoCreator.FactoryMethod() as IRepositoryProcedure<T,S>;
         }
 
         public static DefaultRepository<T, S> GetDefaultRepo() {

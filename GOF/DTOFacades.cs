@@ -392,14 +392,14 @@ namespace BeSmartService.GOF
 
         public RankFacade()
         {
-            _repository = DefaultRepository<TestRankDal, int>.GetDefaultRepo().DefaultRepo as IRepositoryProcedure<TestRankDal,int>;
+            _repository = DefaultRepository<TestRankDal, int>.GetDefaultRepo().DefaultRepoWithProcedure;
         }
 
         public float GetTestRank(int testId)
         {
             Dictionary<string, object> arguments = new Dictionary<string, object>();
             arguments.Add("@testId", testId);
-            float currRank = _repository.CallProcedure<float>("dbo.GetTestRank",arguments);
+            float currRank = _repository.CallProcedure<float>("besmart.GetTestRank",arguments);
             return currRank;
         }
     }
