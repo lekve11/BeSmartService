@@ -386,7 +386,7 @@ namespace BeSmartService.GOF
         }
     }
 
-    public class RankFacade
+    public class RankFacade: ISavableType<SaveTestRank>
     {
         IRepositoryProcedure<TestRankDal, int> _repository;
 
@@ -401,6 +401,12 @@ namespace BeSmartService.GOF
             arguments.Add("@testId", testId);
             float currRank = _repository.CallProcedure<float>("besmart.GetTestRank",arguments);
             return currRank;
+        }
+
+        public int Save(SaveTestRank savableObj)
+        {
+            TestRankDal _rankDal = Mapper.Map<SaveTestRank, TestRankDal>(savableObj);
+            return _repository.Insert(_rankDal);
         }
     }
 }

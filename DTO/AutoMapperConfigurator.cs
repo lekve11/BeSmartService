@@ -51,5 +51,10 @@ namespace BeSmartService.DTO
             Mapper.CreateMap<QuestionTypeDal, QuestionType>();
             Mapper.CreateMap<AchievementDal, Achievement>();
         }
+
+        public static void ConfigureDtoSavables()
+        {
+            Mapper.CreateMap<SaveTestRank, TestRankDal>();
+        }
     }
 }

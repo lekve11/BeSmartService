@@ -35,4 +35,5 @@ namespace BeSmartService.GOF
 
         public string Message { get; private set; }
     }
+
 }

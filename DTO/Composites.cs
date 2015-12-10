@@ -135,6 +135,23 @@ namespace BeSmartService.DTO
         [DataMember]
         public string Name { get; set; }
     }
+
+    [DataContract]
+    public class SaveTestRank
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public int TestId { get; set; }
+
+        [DataMember]
+        public Guid TestUserId { get; set; }
+
+        [DataMember]
+        public int Rank { get; set; }
+    }
+
     #endregion
 
     #region Delete

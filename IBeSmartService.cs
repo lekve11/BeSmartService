@@ -81,6 +81,9 @@ namespace BeSmartService
 
         [WebInvoke(UriTemplate = "Achievements", Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         ResponseData<int> SaveAchievement(SaveAchievement saveAchievement);
+
+        [WebInvoke(UriTemplate ="RankByTest",Method ="PUT",ResponseFormat =WebMessageFormat.Json,RequestFormat =WebMessageFormat.Json)]
+        ResponseData<int> SaveTestRank(SaveTestRank saveTestRank);
         #endregion
 
         #region DELETE
@@ -106,7 +109,5 @@ namespace BeSmartService
         ResponseData<object> DeleteAchievement(DeleteAchievement deleteAchievement);
         #endregion
     }
-
-
-
+    
 }

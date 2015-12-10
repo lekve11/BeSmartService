@@ -23,6 +23,7 @@ namespace BeSmartService
         {
             XmlConfigurator.Configure();
             AutoMapperConfigurator.Configure();
+            AutoMapperConfigurator.ConfigureDtoSavables();
         }
 
         #region GET
@@ -439,6 +440,26 @@ namespace BeSmartService
             }
             return resp;
         }
+
+        public ResponseData<int> SaveTestRank(SaveTestRank saveTestRank)
+        {
+            ResponseData<int> response = new ResponseData<int>();
+
+            if (saveTestRank.Rank <= 5 || saveTestRank.Rank >= 0)
+            {
+                RankFacade rankFacade = new RankFacade();
+                try
+                {
+                    rankFacade.Save(saveTestRank);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response);
+                }
+            }
+
+            return response;
+        }
         #endregion
 
         #region DELETE
@@ -575,5 +596,6 @@ namespace BeSmartService
             return Globals.GetSHA256(userName, password);
         }
 
+        
     }
 }
