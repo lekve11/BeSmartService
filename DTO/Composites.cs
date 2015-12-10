@@ -146,10 +146,10 @@ namespace BeSmartService.DTO
         public int TestId { get; set; }
 
         [DataMember]
-        public Guid TestUserId { get; set; }
+        public Guid StudentUserId { get; set; }
 
         [DataMember]
-        public int Rank { get; set; }
+        public byte Rank { get; set; }
     }
 
     #endregion

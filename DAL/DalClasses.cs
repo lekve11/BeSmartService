@@ -151,7 +151,7 @@ namespace BeSmartService.DAL
         public Guid StudentUserId { get; set; }
 
         [DalObj(Alias ="Rank")]
-        byte Rank { get; set; }
+        public byte Rank { get; set; }
     }
 
     [DalObj(Alias ="besmart.Achievement")]
