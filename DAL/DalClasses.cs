@@ -165,7 +165,7 @@ namespace BeSmartService.DAL
     }
 
     [DalObj(Alias = "besmart.TestQuestions")]  //only dal
-    public class TestQuestions : IEntity<int>
+    public class TestQuestionsDal : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
         public int Id { get; set; }
@@ -183,8 +183,8 @@ namespace BeSmartService.DAL
         public int QuestionTypeId { get; set; }
     }
 
-    [DalObj(Alias = "besmart.StudentUserAchievement")]
-    public class StudentUserAchievement : IEntity<int>
+    [DalObj(Alias = "besmart.StudentUserAchievement")]  //only dal
+    public class StudentUserAchievementDal : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
         public int Id { get; set; }
@@ -202,8 +202,8 @@ namespace BeSmartService.DAL
         public bool IsSeenByUser { get; set; }
     }
 
-    [DalObj(Alias = "besmart.QuestionAnswer")] 
-    public class QuestionAnswer : IEntity<int>
+    [DalObj(Alias = "besmart.QuestionAnswer")]  //only dal  !!missing one value??!!
+    public class QuestionAnswerDal : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
         public int Id { get; set; }
@@ -222,7 +222,7 @@ namespace BeSmartService.DAL
     }
 
     [DalObj(Alias = "besmart.StudentTests")]  //only dal 
-    public class StudentTests : IEntity<int>
+    public class StudentTestsDal : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
         public int Id { get; set; }
@@ -231,14 +231,14 @@ namespace BeSmartService.DAL
         public int TestId { get; set; }
 
         [DalObj(Alias = "StudentId")]
-        public int StudentId { get; set; }
+        public Guid StudentId { get; set; }
 
         [DalObj(Alias = "IsCompleted")]
         public bool IsCompleted { get; set; }
     }
 
     [DalObj(Alias = "besmart.StatusComment")]  //only dal 
-    public class StatusComment : IEntity<int>
+    public class StatusCommentDal : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
         public int Id { get; set; }
@@ -257,7 +257,7 @@ namespace BeSmartService.DAL
     }
 
     [DalObj(Alias = "besmart.Status")]  //only dal   !!smartpoint type?!!
-    public class Status : IEntity<int>
+    public class StatusDal : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
         public int Id { get; set; }
@@ -280,7 +280,7 @@ namespace BeSmartService.DAL
 
 
     [DalObj(Alias = "besmart.UserExperienceInterest")]  //only dal   !!experience point type?!!
-    public class UserExperienceInterest : IEntity<int>
+    public class UserExperienceInterestDal : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
         public int Id { get; set; }
@@ -296,7 +296,7 @@ namespace BeSmartService.DAL
     }
 
     [DalObj(Alias = "besmart.UserInterestPoints")]  //only dal   !!experience point type?!!
-    public class UserInterestPoints : IEntity<int>
+    public class UserInterestPointsDal : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
         public int Id { get; set; }
@@ -312,7 +312,7 @@ namespace BeSmartService.DAL
     }
 
     [DalObj(Alias = "besmart.CreatorUserInterests")]  //dal only
-    public class CreatorUserInterests : IEntity<int>
+    public class CreatorUserInterestsDal : IEntity<int>
     {
         [DalObj(IsPrimaryKey = true, Alias = "Id")]
         public int Id { get; set; }
@@ -325,7 +325,7 @@ namespace BeSmartService.DAL
     }
 
     [DalObj(Alias = "besmart.StudentInterests")]  //dal only
-    public class StudentInterests : IEntity<int>
+    public class StudentInterestsDal : IEntity<int>
     {
         [DalObj(IsPrimaryKey = true, Alias = "Id")]
         public int Id { get; set; }
@@ -339,7 +339,7 @@ namespace BeSmartService.DAL
 
 
     [DalObj(Alias = "besmart.OauthUsers")]  //dal only
-    public class OauthUsers : IEntity<int>
+    public class OauthUsersDal : IEntity<int>
     {
         [DalObj(IsPrimaryKey = true, Alias = "Id")]
         public int Id { get; set; }
