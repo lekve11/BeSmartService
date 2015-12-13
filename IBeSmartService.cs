@@ -44,6 +44,12 @@ namespace BeSmartService
         [WebGet(UriTemplate = "Tests/{id}", ResponseFormat = WebMessageFormat.Json)]
         ResponseData<Test> GetTestById(string id);
 
+        [WebGet(UriTemplate ="Tests/DownloadCount/ByCreator/{creatorId}/{dateDay}",ResponseFormat =WebMessageFormat.Json)]
+        ResponseData<int> GetTestDownloadCountByCreator(string creatorId, string dateDay);
+
+        [WebGet(UriTemplate = "Tests/DownloadCount/ByTest/{testId}/{dateDay}", ResponseFormat = WebMessageFormat.Json)]
+        ResponseData<int> GetTestDownloadCountByTestId(string testId, string dateDay);
+
         [WebGet(UriTemplate = "QuestionTypes", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         ResponseData<List<QuestionType>> GetQuestionTypes();
 
@@ -58,6 +64,7 @@ namespace BeSmartService
 
         [WebGet(UriTemplate = "RankByTest/{testId}",ResponseFormat =WebMessageFormat.Json,RequestFormat =WebMessageFormat.Json)]
         ResponseData<float> GetTestRankById(string testId);
+        
         #endregion
 
         #region PUT

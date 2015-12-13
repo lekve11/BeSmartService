@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Security.Cryptography;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using AutoMapper;
-using BeSmartService.DAL;
 using BeSmartService.DTO;
 using BeSmartService.ExceptionHandlers;
 using BeSmartService.GOF;
@@ -309,6 +302,53 @@ namespace BeSmartService
                 }
             }
             
+            return response;
+        }
+
+        public ResponseData<int> GetTestDownloadCountByCreator(string creatorId, string dateDay)
+        {
+            ResponseData<int> response = new ResponseData<int>();
+
+            DateTime day = new DateTime();
+
+            if(DateTime.TryParse(dateDay,out day))
+            {
+                TestDownloadsFacade facade = new TestDownloadsFacade();
+
+                try
+                {
+                    response.Data = facade.GetDownloadCountByCreator(day, creatorId);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
+                }
+            }
+
+            return response;
+        }
+
+        public ResponseData<int> GetTestDownloadCountByTestId(string testId, string dateDay)
+        {
+            ResponseData<int> response = new ResponseData<int>();
+
+            DateTime day = new DateTime();
+            int currTestId = default(int);
+
+            if (DateTime.TryParse(dateDay, out day) && int.TryParse(testId,out currTestId))
+            {
+                TestDownloadsFacade facade = new TestDownloadsFacade();
+
+                try
+                {
+                    response.Data = facade.GetDownloadCountByTest(day, currTestId);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionHandlerFactory.Factory.GetResponseExceptionHandler(response).Handle(ex);
+                }
+            }
+
             return response;
         }
 

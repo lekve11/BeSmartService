@@ -45,8 +45,8 @@ namespace BeSmartService.DTO
             DTOCache<QuestionType, int> questionTypeCache = new DTOCache<QuestionType, int>(new QuestionTypeFacade());
             DTOCache<StudentUser, Guid> studentUserCache = new DTOCache<StudentUser, Guid>(new StudentUserFacade());
             DTOCache<Achievement, int> achievementCache = new DTOCache<Achievement, int>(new AchievementFacade());
-            DTOCache<TestQuestions, int> testQuestionsCache = new DTOCache<TestQuestions, int>(new TestQuestionsFacade());
-            DTOCache<Status, int> statusCache = new DTOCache<Status, int>(new StatusFacade());
+            //DTOCache<TestQuestions, int> testQuestionsCache = new DTOCache<TestQuestions, int>(new TestQuestionsFacade());
+            //DTOCache<Status, int> statusCache = new DTOCache<Status, int>(new StatusFacade());
 
             Mapper.CreateMap<TestCreatorUserDal, TestCreatorUser>();
             Mapper.CreateMap<InterestDal, Interest>();
@@ -58,9 +58,9 @@ namespace BeSmartService.DTO
 
             Mapper.CreateMap<TestQuestionsDal, TestQuestions>().ForMember(i => i.Test, map => map.MapFrom(d => testCache.GetDtoFromCache(d.TestId))).ForMember(i => i.QuestionType, map => map.MapFrom(d => questionTypeCache.GetDtoFromCache(d.QuestionTypeId)));
             Mapper.CreateMap<StudentUserAchievementDal, StudentUserAchievement>().ForMember(i => i.StudentUser, map => map.MapFrom(d => studentUserCache.GetDtoFromCache(d.StudentUserId))).ForMember(i => i.Achievement, map => map.MapFrom(d => achievementCache.GetDtoFromCache(d.AchievementId)));
-            Mapper.CreateMap<QuestionAnswerDal, QuestionAnswer>().ForMember(i => i.TestQuestions, map => map.MapFrom(d => testQuestionsCache.GetDtoFromCache(d.QuestionId)));
+            //Mapper.CreateMap<QuestionAnswerDal, QuestionAnswer>().ForMember(i => i.TestQuestions, map => map.MapFrom(d => testQuestionsCache.GetDtoFromCache(d.QuestionId)));
             Mapper.CreateMap<StudentTestsDal, StudentTests>().ForMember(i => i.Test, map => map.MapFrom(d => testCache.GetDtoFromCache(d.TestId))).ForMember(d => d.StudentUser, map => map.MapFrom(d => studentUserCache.GetDtoFromCache(d.StudentId)));
-            Mapper.CreateMap<StatusCommentDal, StatusComment>().ForMember(d => d.StudentUser, map => map.MapFrom(d => studentUserCache.GetDtoFromCache(d.UserId))).ForMember(d => d.Status, map => map.MapFrom(d => statusCache.GetDtoFromCache(d.StatusId)));
+            //Mapper.CreateMap<StatusCommentDal, StatusComment>().ForMember(d => d.StudentUser, map => map.MapFrom(d => studentUserCache.GetDtoFromCache(d.UserId))).ForMember(d => d.Status, map => map.MapFrom(d => statusCache.GetDtoFromCache(d.StatusId)));
             Mapper.CreateMap<StatusDal, Status>().ForMember(d => d.StudentUser, map => map.MapFrom(d => studentUserCache.GetDtoFromCache(d.UserId))).ForMember(i => i.Interest, map => map.MapFrom(d => interestCache.GetDtoFromCache(d.InterestId)));
             Mapper.CreateMap<UserExperienceInterestDal, UserExperienceInterest>().ForMember(d => d.StudentUser, map => map.MapFrom(d => studentUserCache.GetDtoFromCache(d.StudentUserId))).ForMember(i => i.Interest, map => map.MapFrom(d => interestCache.GetDtoFromCache(d.InterestId)));
             Mapper.CreateMap<UserInterestPointsDal, UserInterestPoints>().ForMember(d => d.StudentUser, map => map.MapFrom(d => studentUserCache.GetDtoFromCache(d.StudentUserId))).ForMember(i => i.Interest, map => map.MapFrom(d => interestCache.GetDtoFromCache(d.InterestId)));
@@ -72,6 +72,7 @@ namespace BeSmartService.DTO
         public static void ConfigureDtoSavables()
         {
             Mapper.CreateMap<SaveTestRank, TestRankDal>();
+            Mapper.CreateMap<SaveTestDownload, TestDownloadsDal>();
         }
     }
 }

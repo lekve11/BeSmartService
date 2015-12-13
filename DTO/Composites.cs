@@ -342,6 +342,22 @@ namespace BeSmartService.DTO
         public string Email { get; set; }
     }
 
+    [DataContract]
+    public class SaveTestDownload
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public Guid StudentUserId { get; set; }
+
+        [DataMember]
+        public int TestId { get; set; }
+
+        [DataMember]
+        public DateTime DownloadDate { get; set; }
+    }
+
     #endregion
 
 

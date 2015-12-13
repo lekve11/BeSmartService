@@ -409,4 +409,49 @@ namespace BeSmartService.GOF
             return _repository.Insert(_rankDal);
         }
     }
+
+    public class TestDownloadsFacade : ISavableType<SaveTestDownload>
+    {
+        IRepositoryProcedure<TestDownloadsDal, int> _repo;
+
+        public TestDownloadsFacade()
+        {
+            _repo = DefaultRepository<TestDownloadsDal, int>.GetDefaultRepo().DefaultRepoWithProcedure;
+
+        }
+
+        public int Save(SaveTestDownload savableObj)
+        {
+            var currDal = Mapper.Map<SaveTestDownload, TestDownloadsDal>(savableObj);
+
+            if (savableObj.Id == default(int))
+                return _repo.Insert(currDal);
+
+            _repo.Update(currDal);
+
+            return 0;
+        }
+
+        public int GetDownloadCountByCreator(DateTime dateDay,string creatorId)
+        {
+            Dictionary<string, object> arguments = new Dictionary<string, object>();
+            arguments.Add("@creatorId", creatorId);
+            arguments.Add("@date", dateDay);
+
+            int downloadCount = _repo.CallProcedure<int>("[besmart].[GetDownloadCountByCreator]", arguments);
+
+            return downloadCount;
+        }
+
+        public int GetDownloadCountByTest(DateTime dateDay,int testId)
+        {
+            Dictionary<string, object> arguments = new Dictionary<string, object>();
+            arguments.Add("@testId", testId);
+            arguments.Add("@date", dateDay);
+
+            int downloadCount = _repo.CallProcedure<int>("[besmart].[GetDownloadCountByTest]",arguments);
+
+            return downloadCount;
+        }
+    }
 }

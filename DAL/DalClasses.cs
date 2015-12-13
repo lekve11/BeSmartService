@@ -354,4 +354,24 @@ namespace BeSmartService.DAL
         public string Email { get; set; }
     }
 
+    [DalObj(Alias ="besmart.TestDownloads")]
+    public class TestDownloadsDal : IEntity<int>
+    {
+        [DalObj(IsPrimaryKey =true,Alias ="Id")]
+        public int Id
+        {
+            get; set;
+        }
+
+        [DalObj(Alias ="StudentUserId")]
+        public Guid StudentUserId { get; set; }
+
+        [DalObj(Alias ="TestId")]
+        public int TestId { get; set; }
+
+        [DalObj(Alias ="DownloadDate")]
+        public DateTime DownloadDate { get; set; }
+
+    }
+
 }
