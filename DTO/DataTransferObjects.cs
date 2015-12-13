@@ -151,5 +151,198 @@ namespace BeSmartService.DTO
         [DataMember]
         public byte Rank { get; set; }
     }
+
+
+    /////////////////////////////////////////////////////////DTO for dals
+
+    [DataContract]
+    public class TestQuestions : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public string Question { get; set; }
+
+        [DataMember]
+        public string ImgUrl { get; set; }
+
+        [DataMember]
+        public Test Test { get; set; }
+
+        [DataMember]
+        public QuestionType QuestionType { get; set; }
+    }
+
+    [DataContract]
+    public class StudentUserAchievement : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public StudentUser StudentUser { get; set; }
+
+        [DataMember]
+        public Achievement Achievement { get; set; }
+
+        [DataMember]
+        public DateTime DateAchieved { get; set; }
+
+        [DataMember]
+        public bool IsSeenByUser { get; set; }
+    }
+
+    [DataContract]
+    public class QuestionAnswer : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public string Answer { get; set; }
+
+        [DataMember]
+        public TestQuestions TestQuestions { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
+
+        [DataMember]
+        public int AnswerIndex { get; set; }
+    }
+
+    [DataContract]
+    public class StudentTests : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public Test Test { get; set; }
+
+        [DataMember]
+        public StudentUser StudentUser { get; set; }
+
+        [DataMember]
+        public bool IsCompleted { get; set; }
+    }
+
+    [DataContract]
+    public class StatusComment : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public Status Status { get; set; }
+
+        [DataMember]
+        public string Comment { get; set; }
+
+        [DataMember]
+        public StudentUser StudentUser { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
+    }
+
+    [DataContract]
+    public class Status : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public StudentUser StudentUser { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
+
+        [DataMember]
+        public int SmartPoint { get; set; }
+
+        [DataMember]
+        public Interest Interest { get; set; }
+
+        [DataMember]
+        public string Text { get; set; }
+    }
+
+
+    [DataContract]
+    public class UserExperienceInterest : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public StudentUser StudentUser { get; set; }
+
+        [DataMember]
+        public Interest Interest { get; set; }
+
+        [DataMember]
+        public int ExperiencePoint { get; set; }
+    }
+
+    [DataContract]
+    public class UserInterestPoints : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public StudentUser StudentUser { get; set; }
+
+        [DataMember]
+        public Interest Interest { get; set; }
+
+        [DataMember]
+        public int ExperiencePoint { get; set; }
+    }
+
+    [DataContract]
+    public class CreatorUserInterests : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public TestCreatorUser TestCreatorUser { get; set; }
+
+        [DataMember]
+        public Interest Interest { get; set; }
+    }
+
+    [DataContract]
+    public class StudentInterests : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public StudentUser StudentUser { get; set; }
+
+        [DataMember]
+        public Interest Interest { get; set; }
+    }
+
+
+    [DataContract]
+    public class OauthUsers : IDTO<int>
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public StudentUser StudentUser { get; set; }
+
+        [DataMember]
+        public int OauthId { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
+    }
 }
 

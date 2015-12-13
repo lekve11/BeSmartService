@@ -163,7 +163,195 @@ namespace BeSmartService.DAL
         [DalObj(Alias = "Name")]
         public string Name { get; set; }
     }
-         
 
+    [DalObj(Alias = "besmart.TestQuestions")]  //only dal
+    public class TestQuestions : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "Question")]
+        public string Question { get; set; }
+
+        [DalObj(Alias = "ImgUrl")]
+        public string ImgUrl { get; set; }
+
+        [DalObj(Alias = "TestId")]
+        public int TestId { get; set; }
+
+        [DalObj(Alias = "QuestionTypeId")]
+        public int QuestionTypeId { get; set; }
+    }
+
+    [DalObj(Alias = "besmart.StudentUserAchievement")]  //only dal
+    public class StudentUserAchievement : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "StudentUserId")]
+        public Guid StudentUserId { get; set; }
+
+        [DalObj(Alias = "AchievementId")]
+        public int AchievementId { get; set; }
+
+        [DalObj(Alias = "DateAchieved")]
+        public DateTime DateAchieved { get; set; }
+
+        [DalObj(Alias = "IsSeenByUser")]
+        public bool IsSeenByUser { get; set; }
+    }
+
+    [DalObj(Alias = "besmart.QuestionAnswer")]  //only dal  !!missing one value??!!
+    public class QuestionAnswer : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "Answer")]
+        public string Answer { get; set; }
+
+        [DalObj(Alias = "QuestionId")]
+        public int QuestionId { get; set; }
+
+        [DalObj(Alias = "ImageUrl")]
+        public string ImageUrl { get; set; }
+
+        [DalObj(Alias = "AnswerIndex")]
+        public int AnswerIndex { get; set; }
+    }
+
+    [DalObj(Alias = "besmart.StudentTests")]  //only dal 
+    public class StudentTests : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "TestId")]
+        public int TestId { get; set; }
+
+        [DalObj(Alias = "StudentId")]
+        public int StudentId { get; set; }
+
+        [DalObj(Alias = "IsCompleted")]
+        public bool IsCompleted { get; set; }
+    }
+
+    [DalObj(Alias = "besmart.StatusComment")]  //only dal 
+    public class StatusComment : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "StatusId")]
+        public int StatusId { get; set; }
+
+        [DalObj(Alias = "Comment")]
+        public string Comment { get; set; }
+
+        [DalObj(Alias = "UserId")]
+        public Guid UserId { get; set; }
+
+        [DalObj(Alias = "ImageUrl")]
+        public string ImageUrl { get; set; }
+    }
+
+    [DalObj(Alias = "besmart.Status")]  //only dal   !!smartpoint type?!!
+    public class Status : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "UserId")]
+        public Guid UserId { get; set; }
+
+        [DalObj(Alias = "ImageUrl")]
+        public string ImageUrl { get; set; }
+
+        [DalObj(Alias = "SmartPoint")]
+        public int SmartPoint { get; set; }
+
+        [DalObj(Alias = "InterestId")]
+        public int InterestId { get; set; }
+
+        [DalObj(Alias = "Text")]
+        public string Text { get; set; }
+    }
+
+
+    [DalObj(Alias = "besmart.UserExperienceInterest")]  //only dal   !!experience point type?!!
+    public class UserExperienceInterest : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "StudentUserId")]
+        public Guid StudentUserId { get; set; }
+
+        [DalObj(Alias = "InterestId")]
+        public int InterestId { get; set; }
+
+        [DalObj(Alias = "ExperiencePoint")]
+        public int ExperiencePoint { get; set; }
+    }
+
+    [DalObj(Alias = "besmart.UserInterestPoints")]  //only dal   !!experience point type?!!
+    public class UserInterestPoints : IEntity<int>
+    {
+        [DalObj(Alias = "Id", IsPrimaryKey = true)]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "StudentUserId")]
+        public Guid StudentUserId { get; set; }
+
+        [DalObj(Alias = "InterestId")]
+        public int InterestId { get; set; }
+
+        [DalObj(Alias = "ExperiencePoint")]
+        public int ExperiencePoint { get; set; }
+    }
+
+    [DalObj(Alias = "besmart.CreatorUserInterests")]  //dal only
+    public class CreatorUserInterests : IEntity<int>
+    {
+        [DalObj(IsPrimaryKey = true, Alias = "Id")]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "CreatorUserId")]
+        public string CreatorUserId { get; set; }
+
+        [DalObj(Alias = "InterestId")]
+        public int InterestId { get; set; }
+    }
+
+    [DalObj(Alias = "besmart.StudentInterests")]  //dal only
+    public class StudentInterests : IEntity<int>
+    {
+        [DalObj(IsPrimaryKey = true, Alias = "Id")]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "StudentUserId")]
+        public Guid StudentUserId { get; set; }
+
+        [DalObj(Alias = "InterestId")]
+        public int InterestId { get; set; }
+    }
+
+
+    [DalObj(Alias = "besmart.OauthUsers")]  //dal only
+    public class OauthUsers : IEntity<int>
+    {
+        [DalObj(IsPrimaryKey = true, Alias = "Id")]
+        public int Id { get; set; }
+
+        [DalObj(Alias = "UserId")]
+        public Guid UserId { get; set; }
+
+        [DalObj(Alias = "OauthId")]
+        public int OauthId { get; set; }
+
+        [DalObj(Alias = "Email")]
+        public string Email { get; set; }
+    }
 
 }
