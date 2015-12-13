@@ -183,7 +183,7 @@ namespace BeSmartService.DAL
         public int QuestionTypeId { get; set; }
     }
 
-    [DalObj(Alias = "besmart.StudentUserAchievement")]  //only dal
+    [DalObj(Alias = "besmart.StudentUserAchievement")]
     public class StudentUserAchievement : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
@@ -202,7 +202,7 @@ namespace BeSmartService.DAL
         public bool IsSeenByUser { get; set; }
     }
 
-    [DalObj(Alias = "besmart.QuestionAnswer")]  //only dal  !!missing one value??!!
+    [DalObj(Alias = "besmart.QuestionAnswer")] 
     public class QuestionAnswer : IEntity<int>
     {
         [DalObj(Alias = "Id", IsPrimaryKey = true)]
